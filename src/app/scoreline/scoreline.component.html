@@ -1,0 +1,22 @@
+<app-create-scoreline></app-create-scoreline>
+<br>
+<h2 class="headings">List of Scorelines</h2>
+<br>
+<h3 class="headings subtle">Please click on the table item you want to Update or Delete</h3>
+<br>
+<table class="table table-borderless table-hover" col-span="4">
+    <thead class="thead-light">
+        <th>ID</th>
+        <th>Match ID</th>
+        <th>Score</th>
+        <th>Time</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let scoreline of scorelines" [routerLink]="['/scorelines', scoreline.id]">
+            <td>{{scoreline.id}}</td>
+            <td>{{scoreline.match_id}}</td>
+            <td>{{scoreline.score}}</td>
+            <td>{{scoreline.time}}</td>
+        </tr>
+    </tbody>
+</table>

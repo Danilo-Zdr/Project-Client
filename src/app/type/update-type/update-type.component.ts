@@ -1,0 +1,45 @@
+import { Component, OnInit } from '@angular/core';
+import { Type } from 'src/app/shared/type.model';
+import { TypeService } from 'src/app/shared/type.service';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+
+@Component({
+  selector: 'app-update-type',
+  templateUrl: './update-type.component.html',
+  styleUrls: ['./update-type.component.css']
+})
+export class UpdateTypeComponent implements OnInit {
+
+  type = new Type() ;
+  submitted = false;
+  message: string;
+
+  constructor(
+    public typeService: TypeService,
+    public route: ActivatedRoute,
+    public location: Location
+  ) {}
+
+  ngOnInit(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.typeService.getType(id)
+      .subscribe(type => this.type = type);
+  }
+
+  update(): void {
+    this.submitted = true;
+    this.typeService.updateType(this.type)
+        .subscribe(() => this.message = 'Match Type Updated Successfully!');
+  }
+
+  delete(): void {
+    this.submitted = true;
+    this.typeService.deleteType(this.type.id)
+        .subscribe(() => this.message = 'Match Type Deleted Successfully!');
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+}

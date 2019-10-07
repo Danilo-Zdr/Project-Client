@@ -1,0 +1,18 @@
+<app-create-type></app-create-type>
+<br>
+<h2 class="headings">List of Match Types</h2>
+<br>
+<h3 class="headings subtle">Please click on the table item you want to Update or Delete</h3>
+<br>
+<table class="table table-borderless table-hover" col-span="2">
+    <thead class="thead-light">
+        <th>Type ID</th>
+        <th>Match Type Name</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let type of types" [routerLink]="['/types', type.id]">
+            <td>{{type.id}}</td>
+            <td>{{type.name}}</td>
+        </tr>
+    </tbody>
+</table>

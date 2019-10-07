@@ -1,0 +1,18 @@
+<app-create-team></app-create-team>
+<br>
+<h2 class="headings">List of Teams</h2>
+<br>
+<h3 class="headings subtle">Please click on the table item you want to Update or Delete</h3>
+<br>
+<table class="table table-borderless table-hover" col-span="2">
+    <thead class="thead-light">
+        <th>Team ID</th>
+        <th>Team Name</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let team of teams" [routerLink]="['/teams', team.id]">
+            <td>{{team.id}}</td>
+            <td>{{team.name}}</td>
+        </tr>
+    </tbody>
+</table>

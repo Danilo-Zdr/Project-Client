@@ -1,0 +1,30 @@
+<app-create-match></app-create-match>
+<br>
+<h2 class="headings">List of Matches</h2>
+<br>
+<h3 class="headings subtle">Please click on the table item you want to Update or Delete</h3>
+<br>
+<table class="table table-borderless table-hover" col-span="8">
+    <thead class="thead-light">
+        <th>ID</th>
+        <th>Team 1 ID</th>
+        <th>Team 2 ID</th>
+        <th>Match Type</th>
+        <th>Start of Match</th>
+        <th>End of Match</th>
+        <th>Created At</th>
+        <th>Updated At</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let match of matches" [routerLink]="['/matches', match.id]">
+            <td>{{match.id}}</td>
+            <td>{{match.team1_id}}</td>
+            <td>{{match.team2_id}}</td>
+            <td>{{match.type_id}}</td>
+            <td>{{match.start_time}}</td>
+            <td>{{match.end_time}}</td>
+            <td>{{match.createdAt}}</td>
+            <td>{{match.updatedAt}}</td>
+        </tr>
+    </tbody>
+</table>

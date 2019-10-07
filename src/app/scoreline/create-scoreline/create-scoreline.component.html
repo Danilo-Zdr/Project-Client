@@ -1,0 +1,39 @@
+<h2 class="headings">Welcome to the Scoreline page</h2>
+<br>
+<form #createForm="ngForm" autocomplete="off">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Match ID</label>
+                <select name="match_id" #match_id="ngModel" [(ngModel)]="scoreline.match_id" class="form-control" required>
+                        <option value="" disabled selected>Select your option</option>
+                            <option *ngFor="let match of matches" value="{{match.id}}">{{match.id}}</option>
+                        </select>
+                <div [hidden]="match_id.valid || match_id.pristine" class="alert alert-danger">
+                    Match ID is required
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Score</label>
+                <input name="score" #score="ngModel" [(ngModel)]="scoreline.score" class="form-control" required>
+                <div [hidden]="score.valid || score.pristine" class="alert alert-danger">
+                    Score is required
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Time</label>
+                <input type="datetime-local" name="time" #time="ngModel" [(ngModel)]="scoreline.time" class="form-control" required>
+                <div [hidden]="time.valid || time.pristine" class="alert alert-danger">
+                    Time is required
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="btn-group btn-group-sm">
+            <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+            <button type="button" class="btn btn-dark" (click)="addScoreline()" [disabled]="!createForm.form.valid">Add</button>
+        </div>
+    </div>
+</form>

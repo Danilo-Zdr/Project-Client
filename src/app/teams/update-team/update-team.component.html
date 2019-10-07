@@ -1,0 +1,29 @@
+<h2 class="headings">Welcome to the Team update/delete page</h2>
+<br>
+<div [hidden]="submitted">
+    <form #detailsTeam="ngForm">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input name="name" #name="ngModel" [(ngModel)]="team.name" class="form-control" required>
+                    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                        Name is required
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="div form-group">
+            <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+            <button type="button" class="btn btn-dark" (click)="update()" [disabled]="!detailsTeam.form.valid">Update</button>
+            <button type="button" class="btn btn-dark" (click)="delete()">Delete</button>
+        </div>
+    </form>
+</div>
+<div [hidden]="!submitted">
+    <p>{{message}}</p>
+    <div class="btn-group btn-group-sm">
+        <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+    </div>
+</div>

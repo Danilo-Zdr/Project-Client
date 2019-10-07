@@ -1,0 +1,56 @@
+input.ng-dirty.ng-invalid {
+    border-color: red;
+    background-color: rgb(255, 185, 185);
+}
+
+select.ng-dirty.ng-invalid {
+    border-color: red;
+    background-color: rgb(255, 185, 185);
+}
+
+.jumbotron {
+    background-image: url('src/assets/triangular.png');
+    background-repeat: repeat repeat;
+    min-height: 100vh;
+}
+
+tbody {
+    background-color: aliceblue;
+    opacity: 0.5;
+}
+
+.btn {
+    width: 80px;
+    height: 50px;
+}
+
+.headings {
+    text-align: center;
+}
+
+.subtle {
+    color: rgb(75, 75, 75);
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: -15px;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.ng-valid[required],
+.ng-valid.required {
+    border-left: 5px solid rgba(32, 77, 32, 0.623);
+}
+
+.ng-invalid:not(form) {
+    border-left: 5px solid rgb(148, 27, 27);
+}

@@ -1,0 +1,59 @@
+<h2 class="headings">Welcome to the match creation page</h2>
+<br>
+<form #createForm="ngForm" autocomplete="off">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Team 1</label>
+                <select name="team1_id" #team1_id="ngModel" [(ngModel)]="match.team1_id" class="form-control" required>
+                        <option value="" disabled selected>Select your option</option>
+                        <option *ngFor="let team of teams" value="{{team.id}}">{{team.name}}</option>
+                        </select>
+                <div [hidden]="team1_id.valid || team1_id.pristine" class="alert alert-danger">
+                    Team 1 is required
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Team 2</label>
+                <select name="team2_id" #team2_id="ngModel" [(ngModel)]="match.team2_id" class="form-control" required>
+                        <option value="" disabled selected>Select your option</option>
+                        <option *ngFor="let team of teams" value="{{team.id}}">{{team.name}}</option>
+                        </select>
+                <div [hidden]="team2_id.valid || team2_id.pristine" class="alert alert-danger">
+                    Team 2 is required
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Match Type</label>
+                <select name="type_id" #type_id="ngModel" [(ngModel)]="match.type_id" class="form-control" required>
+                        <option value="" disabled selected>Select your option</option>
+                        <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
+                        </select>
+                <div [hidden]="type_id.valid || type_id.pristine" class="alert alert-danger">
+                    Match type is required
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Start of Match</label>
+                <input type="datetime-local" name="start_time" #start_time="ngModel" [(ngModel)]="match.start_time" class="form-control" required>
+                <div [hidden]="start_time.valid || start_time.pristine" class="alert alert-danger">
+                    The starting time of the match is required
+                </div>
+            </div>
+            <div class="form-group">
+                <label>End of Match</label>
+                <input type="datetime-local" name="end_time" #end_time="ngModel" [(ngModel)]="match.end_time" class="form-control" required>
+                <div [hidden]="end_time.valid || end_time.pristine" class="alert alert-danger">
+                    The end time of the match is required
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="btn-group btn-group-sm">
+        <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+        <button type="button" class="btn btn-dark" (click)="addMatch()" [disabled]="!createForm.form.valid">Add</button>
+    </div>
+</form>
