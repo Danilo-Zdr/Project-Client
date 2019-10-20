@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { Type } from 'src/app/shared/type.model';
 import { TypeService } from 'src/app/shared/type.service';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -9,7 +9,7 @@ import { Location } from '@angular/common';
   templateUrl: './update-type.component.html',
   styleUrls: ['./update-type.component.css']
 })
-export class UpdateTypeComponent implements OnInit {
+export class UpdateTypeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   type = new Type() ;
   submitted = false;
@@ -42,4 +42,13 @@ export class UpdateTypeComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+  ngAfterViewInit() {
+    console.log('View loading complete.');
+  }
+
+  ngOnDestroy() {
+    console.log('Destruction complete.');
+  }
+
 }

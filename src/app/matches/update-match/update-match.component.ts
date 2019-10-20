@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { Match } from 'src/app/shared/match.model';
 import { MatchService } from 'src/app/shared/match.service';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -13,7 +13,7 @@ import { TypeService } from 'src/app/shared/type.service';
   templateUrl: './update-match.component.html',
   styleUrls: ['./update-match.component.css']
 })
-export class UpdateMatchComponent implements OnInit {
+export class UpdateMatchComponent implements OnInit, OnDestroy, AfterViewInit {
 
   teams: Team[];
   types: Type[];
@@ -73,4 +73,12 @@ export class UpdateMatchComponent implements OnInit {
                 }
                );
  }
+
+ ngAfterViewInit() {
+  console.log('View loading complete.');
+}
+
+ngOnDestroy() {
+  console.log('Destruction complete.');
+}
 }

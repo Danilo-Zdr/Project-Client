@@ -21,10 +21,10 @@
             <td>{{match.team1_id}}</td>
             <td>{{match.team2_id}}</td>
             <td>{{match.type_id}}</td>
-            <td>{{match.start_time}}</td>
-            <td>{{match.end_time}}</td>
-            <td>{{match.createdAt}}</td>
-            <td>{{match.updatedAt}}</td>
+            <td>{{match.start_time | date:'short'}}</td>
+            <td>{{match.end_time | date:'short'}}</td>
+            <td>{{match.createdAt | date:'short'}}</td>
+            <td>{{match.updatedAt | date:'short'}}</td>
         </tr>
     </tbody>
 </table>

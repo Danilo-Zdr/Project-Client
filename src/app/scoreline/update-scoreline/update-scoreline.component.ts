@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { Scoreline } from 'src/app/shared/scoreline.model';
 import { ScorelineService } from 'src/app/shared/scoreline.service';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -11,7 +11,7 @@ import { MatchService } from 'src/app/shared/match.service';
   templateUrl: './update-scoreline.component.html',
   styleUrls: ['./update-scoreline.component.css']
 })
-export class UpdateScorelineComponent implements OnInit {
+export class UpdateScorelineComponent implements OnInit, OnDestroy, AfterViewInit {
 
   scoreline = new Scoreline();
   matches: Match[];
@@ -58,4 +58,11 @@ export class UpdateScorelineComponent implements OnInit {
                 );
  }
 
+ ngAfterViewInit() {
+   console.log('View loading complete.');
+ }
+
+ ngOnDestroy() {
+   console.log('Destruction complete.');
+ }
 }

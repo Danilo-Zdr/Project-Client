@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { TeamService } from 'src/app/shared/team.service';
 import { Team } from '../shared/team.model';
 
