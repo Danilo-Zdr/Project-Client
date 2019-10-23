@@ -1,4 +1,9 @@
-# Projekat
+# Project-Client
+
+This project is the client side of an application for the administration of sports matches. The client is composed of pages and forms through which a user can manage matches, match types (sports), teams (match participants), and match scores.
+The client is built using Angular and its various libraries.
+
+The server part of the project can be found here: (https://github.com/Danilo-Zdr/Project-Server)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
