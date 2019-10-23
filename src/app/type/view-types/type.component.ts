@@ -10,7 +10,7 @@ import { Type } from 'src/app/shared/type.model';
 })
 export class TypeComponent implements OnInit {
 
-  types: Type[];
+  public types: Type[];
 
   constructor(public typeService: TypeService) {}
 
@@ -20,11 +20,10 @@ export class TypeComponent implements OnInit {
 
   getTypes() {
     return this.typeService.getTypes()
-               .subscribe(
-                 types => {
-                  console.log(types);
-                  this.types = types;
-                 }
-                );
+    .subscribe(
+      types => {
+        console.log(types);
+        this.types = types;
+        });
  }
 }

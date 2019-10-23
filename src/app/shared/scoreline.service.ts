@@ -11,11 +11,11 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ScorelineService {
-    formData: Scoreline;
-  public scorelinesUrl = 'http://localhost:8080/api/scorelines';  // URL to web api
-  constructor(
-    public http: HttpClient
-  ) { }
+    public formData: Scoreline;
+    public scorelinesUrl = 'http://localhost:8080/api/scorelines';
+    constructor(
+      public http: HttpClient
+    ) { }
 
   getScorelines(): Observable<Scoreline[]> {
     return this.http.get<Scoreline[]>(this.scorelinesUrl);

@@ -10,8 +10,8 @@ import { Location } from '@angular/common';
 })
 export class CreateTypeComponent {
 
-  type = new Type();
-  submitted = false;
+  public type = new Type();
+  public submitted = false;
 
   constructor(
     private typeService: TypeService,
@@ -24,9 +24,9 @@ export class CreateTypeComponent {
   }
 
  addType() {
-   this.submitted = true;
-   this.save();
-   window.location.reload();
+    this.submitted = true;
+    this.save();
+    window.location.reload();
  }
 
   goBack(): void {
@@ -35,6 +35,6 @@ export class CreateTypeComponent {
 
   private save(): void {
     this.typeService.addType(this.type)
-        .subscribe();
+    .subscribe();
   }
 }

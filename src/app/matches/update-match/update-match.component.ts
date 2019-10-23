@@ -15,19 +15,18 @@ import { TypeService } from 'src/app/shared/type.service';
 })
 export class UpdateMatchComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  teams: Team[];
-  types: Type[];
-
-  match = new Match() ;
-  submitted = false;
-  message: string;
+  public teams: Team[];
+  public types: Type[];
+  public match = new Match() ;
+  public submitted = false;
+  public message: string;
 
   constructor(
-    public matchService: MatchService,
-    public teamService: TeamService,
-    public typeService: TypeService,
-    public route: ActivatedRoute,
-    public location: Location
+    private matchService: MatchService,
+    private teamService: TeamService,
+    private typeService: TypeService,
+    private route: ActivatedRoute,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -41,13 +40,13 @@ export class UpdateMatchComponent implements OnInit, OnDestroy, AfterViewInit {
   update(): void {
     this.submitted = true;
     this.matchService.updateMatch(this.match)
-        .subscribe(() => this.message = 'Match Updated Successfully!');
+    .subscribe(() => this.message = 'Match Updated Successfully!');
   }
 
   delete(): void {
     this.submitted = true;
     this.matchService.deleteMatch(this.match.id)
-        .subscribe(() => this.message = 'Match Deleted Successfully!');
+    .subscribe(() => this.message = 'Match Deleted Successfully!');
   }
 
   goBack(): void {
@@ -56,29 +55,27 @@ export class UpdateMatchComponent implements OnInit, OnDestroy, AfterViewInit {
 
   getTeams() {
     return this.teamService.getTeams()
-               .subscribe(
-                 teams => {
-                  console.log(teams);
-                  this.teams = teams;
-                 }
-                );
- }
+    .subscribe(
+      teams => {
+      console.log(teams);
+      this.teams = teams;
+    });
+  }
 
- getTypes() {
+  getTypes() {
    return this.typeService.getTypes()
-              .subscribe(
-                types => {
-                 console.log(types);
-                 this.types = types;
-                }
-               );
+  .subscribe(
+    types => {
+      console.log(types);
+      this.types = types;
+      });
  }
 
- ngAfterViewInit() {
+  ngAfterViewInit() {
   console.log('View loading complete.');
-}
+  }
 
-ngOnDestroy() {
-  console.log('Destruction complete.');
-}
+  ngOnDestroy() {
+    console.log('Destruction complete.');
+  }
 }

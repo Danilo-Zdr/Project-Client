@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ScorelineService } from '../shared/scoreline.service';
-import { Scoreline } from '../shared/scoreline.model';
+import { ScorelineService } from '../../shared/scoreline.service';
+import { Scoreline } from '../../shared/scoreline.model';
 
 @Component({
   selector: 'app-scoreline',
@@ -9,7 +9,7 @@ import { Scoreline } from '../shared/scoreline.model';
 })
 export class ScorelineComponent implements OnInit {
 
-  scorelines: Scoreline[];
+  public scorelines: Scoreline[];
 
   constructor(public scorelineService: ScorelineService) {}
 
@@ -19,11 +19,10 @@ export class ScorelineComponent implements OnInit {
 
   getScorelines() {
     return this.scorelineService.getScorelines()
-               .subscribe(
-                 scorelines => {
-                  console.log(scorelines);
-                  this.scorelines = scorelines;
-                 }
-                );
+    .subscribe(
+      scorelines => {
+      console.log(scorelines);
+      this.scorelines = scorelines;
+    });
  }
 }

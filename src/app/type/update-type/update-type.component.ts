@@ -11,14 +11,14 @@ import { Location } from '@angular/common';
 })
 export class UpdateTypeComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  type = new Type() ;
-  submitted = false;
-  message: string;
+  public type = new Type() ;
+  public submitted = false;
+  public message: string;
 
   constructor(
-    public typeService: TypeService,
-    public route: ActivatedRoute,
-    public location: Location
+    private typeService: TypeService,
+    private route: ActivatedRoute,
+    private location: Location
   ) {}
 
   ngOnInit(): void {

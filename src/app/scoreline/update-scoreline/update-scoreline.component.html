@@ -7,9 +7,9 @@
                 <div class="form-group">
                     <label>Match ID</label>
                     <select name="match_id" #match_id="ngModel" [(ngModel)]="scoreline.match_id" class="form-control" required>
-                            <option value="" disabled selected>Select your option</option>
-                            <option *ngFor="let match of matches" value="{{match.id}}">{{match.id}}</option>
-                        </select>
+                        <option value="" disabled selected>Select your option</option>
+                        <option *ngFor="let match of matches" value="{{match.id}}">{{match.id}}</option>
+                    </select>
                     <div [hidden]="match_id.valid || match_id.pristine" class="alert alert-danger">
                         Match ID is required
                     </div>

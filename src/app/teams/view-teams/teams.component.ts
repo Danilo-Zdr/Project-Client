@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { TeamService } from 'src/app/shared/team.service';
-import { Team } from '../shared/team.model';
+import { Team } from '../../shared/team.model';
 
 @Component({
   selector: 'app-teams',
@@ -9,7 +9,7 @@ import { Team } from '../shared/team.model';
 })
 export class TeamsComponent implements OnInit {
 
-  teams: Team[];
+  public teams: Team[];
 
   constructor(public teamService: TeamService) {}
 
@@ -19,11 +19,10 @@ export class TeamsComponent implements OnInit {
 
   getTeams() {
     return this.teamService.getTeams()
-               .subscribe(
-                 teams => {
-                  console.log(teams);
-                  this.teams = teams;
-                 }
-                );
+    .subscribe(
+      teams => {
+        console.log(teams);
+        this.teams = teams;
+        });
  }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Match } from '../shared/match.model';
-import { MatchService } from '../shared/match.service';
+import { Match } from '../../shared/match.model';
+import { MatchService } from '../../shared/match.service';
 
 @Component({
   selector: 'app-matches',
@@ -9,8 +9,7 @@ import { MatchService } from '../shared/match.service';
 })
 export class MatchesComponent implements OnInit {
 
-  matches: Match[];
-
+  public matches: Match[];
 
   constructor(public matchService: MatchService) {}
 
@@ -20,11 +19,10 @@ export class MatchesComponent implements OnInit {
 
   getMatches() {
     return this.matchService.getMatches()
-               .subscribe(
-                 matches => {
-                  console.log(matches);
-                  this.matches = matches;
-                 }
-                );
+      .subscribe(
+        matches => {
+        console.log(matches);
+        this.matches = matches;
+        });
  }
 }

@@ -11,32 +11,32 @@ import { Location } from '@angular/common';
 })
 export class UpdateTeamComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  team = new Team() ;
-  submitted = false;
-  message: string;
+  public team = new Team() ;
+  public submitted = false;
+  public message: string;
 
   constructor(
-    public teamService: TeamService,
-    public route: ActivatedRoute,
-    public location: Location
+    private teamService: TeamService,
+    private route: ActivatedRoute,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.teamService.getTeam(id)
-      .subscribe(team => this.team = team);
+    .subscribe(team => this.team = team);
   }
 
   update(): void {
     this.submitted = true;
     this.teamService.updateTeam(this.team)
-        .subscribe(() => this.message = 'Team Updated Successfully!');
+    .subscribe(() => this.message = 'Team Updated Successfully!');
   }
 
   delete(): void {
     this.submitted = true;
     this.teamService.deleteTeam(this.team.id)
-        .subscribe(() => this.message = 'Team Deleted Successfully!');
+    .subscribe(() => this.message = 'Team Deleted Successfully!');
   }
 
   goBack(): void {

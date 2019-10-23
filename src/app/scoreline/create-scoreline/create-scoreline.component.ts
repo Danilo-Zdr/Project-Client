@@ -12,14 +12,14 @@ import { MatchService } from 'src/app/shared/match.service';
 })
 export class CreateScorelineComponent implements OnInit {
 
-  matches: Match[];
-  scoreline = new Scoreline();
-  submitted = false;
+  public matches: Match[];
+  public scoreline = new Scoreline();
+  public submitted = false;
 
   constructor(
-    public scorelineService: ScorelineService,
-    public matchService: MatchService,
-    public location: Location
+    private scorelineService: ScorelineService,
+    private matchService: MatchService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -32,9 +32,9 @@ export class CreateScorelineComponent implements OnInit {
   }
 
  addScoreline() {
-   this.submitted = true;
-   this.save();
-   window.location.reload();
+    this.submitted = true;
+    this.save();
+    window.location.reload();
  }
 
   goBack(): void {
@@ -43,17 +43,15 @@ export class CreateScorelineComponent implements OnInit {
 
   public save(): void {
     this.scorelineService.addScoreline(this.scoreline)
-        .subscribe();
+    .subscribe();
   }
 
   getMatches() {
     return this.matchService.getMatches()
-               .subscribe(
-                 matches => {
-                  console.log(matches);
-                  this.matches = matches;
-                 }
-                );
+      .subscribe(
+      matches => {
+        console.log(matches);
+        this.matches = matches;
+        });
  }
-
 }

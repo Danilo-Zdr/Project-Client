@@ -19,10 +19,10 @@ export class UpdateScorelineComponent implements OnInit, OnDestroy, AfterViewIni
   message: string;
 
   constructor(
-    public scorelineService: ScorelineService,
-    public matchService: MatchService,
-    public route: ActivatedRoute,
-    public location: Location
+    private scorelineService: ScorelineService,
+    private matchService: MatchService,
+    private route: ActivatedRoute,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -35,13 +35,13 @@ export class UpdateScorelineComponent implements OnInit, OnDestroy, AfterViewIni
   update(): void {
     this.submitted = true;
     this.scorelineService.updateScoreline(this.scoreline)
-        .subscribe(() => this.message = 'Scoreline Updated Successfully!');
+    .subscribe(() => this.message = 'Scoreline Updated Successfully!');
   }
 
   delete(): void {
     this.submitted = true;
     this.scorelineService.deleteScoreline(this.scoreline.id)
-        .subscribe(() => this.message = 'Scoreline Deleted Successfully!');
+    .subscribe(() => this.message = 'Scoreline Deleted Successfully!');
   }
 
   goBack(): void {
@@ -50,19 +50,18 @@ export class UpdateScorelineComponent implements OnInit, OnDestroy, AfterViewIni
 
   getMatches() {
     return this.matchService.getMatches()
-               .subscribe(
-                 matches => {
-                  console.log(matches);
-                  this.matches = matches;
-                 }
-                );
+    .subscribe(
+      matches => {
+        console.log(matches);
+        this.matches = matches;
+      });
  }
 
  ngAfterViewInit() {
-   console.log('View loading complete.');
+    console.log('View loading complete.');
  }
 
  ngOnDestroy() {
-   console.log('Destruction complete.');
+    console.log('Destruction complete.');
  }
 }

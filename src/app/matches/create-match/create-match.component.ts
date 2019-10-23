@@ -7,7 +7,6 @@ import { Type } from 'src/app/shared/type.model';
 import { TeamService } from 'src/app/shared/team.service';
 import { TypeService } from 'src/app/shared/type.service';
 
-
 @Component({
   selector: 'app-create-match',
   templateUrl: './create-match.component.html',
@@ -15,55 +14,51 @@ import { TypeService } from 'src/app/shared/type.service';
 })
 export class CreateMatchComponent implements OnInit {
 
-  teams: Team[];
-  types: Type[];
-
-  match = new Match();
-  submitted = false;
+  public teams: Team[];
+  public types: Type[];
+  public match = new Match();
+  public submitted = false;
 
   constructor(
-    public matchService: MatchService,
-    public teamService: TeamService,
-    public typeService: TypeService,
-    public location: Location
+    private matchService: MatchService,
+    private teamService: TeamService,
+    private typeService: TypeService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
     this.getTeams();
     this.getTypes();
- }
+  }
 
- getTeams() {
+    getTeams() {
    return this.teamService.getTeams()
-              .subscribe(
-                teams => {
-                 console.log(teams);
-                 this.teams = teams;
-                }
-               );
-}
+    .subscribe(
+      teams => {
+       console.log(teams);
+       this.teams = teams;
+      });
+  }
 
-getTypes() {
+  getTypes() {
   return this.typeService.getTypes()
-             .subscribe(
-               types => {
-                console.log(types);
-                this.types = types;
-               }
-              );
-}
-
+    .subscribe(
+    types => {
+      console.log(types);
+      this.types = types;
+    });
+  }
 
   newMatch(): void {
     this.submitted = false;
     this.match = new Match();
   }
 
- addMatch() {
+  addMatch() {
    this.submitted = true;
    this.save();
    window.location.reload();
- }
+  }
 
   goBack(): void {
     this.location.back();
@@ -71,6 +66,6 @@ getTypes() {
 
   public save(): void {
     this.matchService.addMatch(this.match)
-        .subscribe();
+    .subscribe();
   }
 }

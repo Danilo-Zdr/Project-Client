@@ -10,8 +10,8 @@ import { Location } from '@angular/common';
 })
 export class CreateTeamComponent {
 
-  team = new Team();
-  submitted = false;
+  public team = new Team();
+  public submitted = false;
 
   constructor(
     private teamService: TeamService,
@@ -35,6 +35,6 @@ export class CreateTeamComponent {
 
   private save(): void {
     this.teamService.addTeam(this.team)
-        .subscribe();
+    .subscribe();
   }
 }
