@@ -23,17 +23,17 @@ export class CreateTeamComponent {
     this.team = new Team();
   }
 
- addTeam() {
-   this.submitted = true;
-   this.save();
-   window.location.reload();
+ addTeam(): void {
+    this.submitted = true;
+    this.save();
+    window.location.reload();
  }
 
   goBack(): void {
     this.location.back();
   }
 
-  private save(): void {
+  save(): void {
     this.teamService.addTeam(this.team)
     .subscribe();
   }

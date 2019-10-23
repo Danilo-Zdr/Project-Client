@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TypeService } from 'src/app/shared/type.service';
 import { Type } from 'src/app/shared/type.model';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class TypeComponent implements OnInit {
      this.getTypes();
   }
 
-  getTypes() {
+  getTypes(): Subscription {
     return this.typeService.getTypes()
     .subscribe(
       types => {

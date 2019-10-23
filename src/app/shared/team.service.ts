@@ -11,11 +11,11 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class TeamService {
-    public formData: Team;
-    public teamsUrl = 'http://localhost:8080/api/teams';
-    constructor(
-      public http: HttpClient
-    ) { }
+  public formData: Team;
+  public teamsUrl = 'http://localhost:8080/api/teams';
+  constructor(
+    public http: HttpClient
+  ) { }
 
   getTeams(): Observable<Team[]> {
     return this.http.get<Team[]>(this.teamsUrl);

@@ -11,11 +11,11 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class MatchService {
-    public formData: Match;
-    public matchesUrl = 'http://localhost:8080/api/matches';
-    constructor(
-      public http: HttpClient
-    ) { }
+  public formData: Match;
+  public matchesUrl = 'http://localhost:8080/api/matches';
+  constructor(
+    public http: HttpClient
+  ) { }
 
   getMatches(): Observable<Match[]> {
     return this.http.get<Match[]>(this.matchesUrl);

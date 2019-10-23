@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ScorelineService } from '../../shared/scoreline.service';
 import { Scoreline } from '../../shared/scoreline.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-scoreline',
@@ -17,7 +18,7 @@ export class ScorelineComponent implements OnInit {
      this.getScorelines();
   }
 
-  getScorelines() {
+  getScorelines(): Subscription {
     return this.scorelineService.getScorelines()
     .subscribe(
       scorelines => {

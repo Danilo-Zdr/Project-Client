@@ -23,7 +23,7 @@ export class CreateTypeComponent {
     this.type = new Type();
   }
 
- addType() {
+ addType(): void {
     this.submitted = true;
     this.save();
     window.location.reload();
@@ -33,7 +33,7 @@ export class CreateTypeComponent {
     this.location.back();
   }
 
-  private save(): void {
+  save(): void {
     this.typeService.addType(this.type)
     .subscribe();
   }

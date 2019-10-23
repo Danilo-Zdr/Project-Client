@@ -14,6 +14,7 @@ export class UpdateTeamComponent implements OnInit, OnDestroy, AfterViewInit {
   public team = new Team() ;
   public submitted = false;
   public message: string;
+  public id: number;
 
   constructor(
     private teamService: TeamService,
@@ -43,11 +44,11 @@ export class UpdateTeamComponent implements OnInit, OnDestroy, AfterViewInit {
     this.location.back();
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     console.log('View loading complete.');
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     console.log('Destruction complete.');
   }
 

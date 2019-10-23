@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { TeamService } from 'src/app/shared/team.service';
 import { Team } from '../../shared/team.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-teams',
@@ -17,7 +18,7 @@ export class TeamsComponent implements OnInit {
      this.getTeams();
   }
 
-  getTeams() {
+  getTeams(): Subscription {
     return this.teamService.getTeams()
     .subscribe(
       teams => {

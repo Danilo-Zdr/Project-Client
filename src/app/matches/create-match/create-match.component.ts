@@ -6,6 +6,7 @@ import { Team } from 'src/app/shared/team.model';
 import { Type } from 'src/app/shared/type.model';
 import { TeamService } from 'src/app/shared/team.service';
 import { TypeService } from 'src/app/shared/type.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-create-match',
@@ -31,18 +32,18 @@ export class CreateMatchComponent implements OnInit {
     this.getTypes();
   }
 
-    getTeams() {
-   return this.teamService.getTeams()
-    .subscribe(
-      teams => {
-       console.log(teams);
-       this.teams = teams;
-      });
+  getTeams(): Subscription {
+  return this.teamService.getTeams()
+  .subscribe(
+    teams => {
+      console.log(teams);
+      this.teams = teams;
+    });
   }
 
-  getTypes() {
+  getTypes(): Subscription {
   return this.typeService.getTypes()
-    .subscribe(
+  .subscribe(
     types => {
       console.log(types);
       this.types = types;
@@ -54,17 +55,17 @@ export class CreateMatchComponent implements OnInit {
     this.match = new Match();
   }
 
-  addMatch() {
-   this.submitted = true;
-   this.save();
-   window.location.reload();
+  addMatch(): void {
+    this.submitted = true;
+    this.save();
+    window.location.reload();
   }
 
   goBack(): void {
     this.location.back();
   }
 
-  public save(): void {
+  save(): void {
     this.matchService.addMatch(this.match)
     .subscribe();
   }

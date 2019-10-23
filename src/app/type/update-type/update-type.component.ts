@@ -14,6 +14,7 @@ export class UpdateTypeComponent implements OnInit, OnDestroy, AfterViewInit {
   public type = new Type() ;
   public submitted = false;
   public message: string;
+  public id: number;
 
   constructor(
     private typeService: TypeService,
@@ -24,30 +25,30 @@ export class UpdateTypeComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.typeService.getType(id)
-      .subscribe(type => this.type = type);
+    .subscribe(type => this.type = type);
   }
 
   update(): void {
     this.submitted = true;
     this.typeService.updateType(this.type)
-        .subscribe(() => this.message = 'Match Type Updated Successfully!');
+    .subscribe(() => this.message = 'Match Type Updated Successfully!');
   }
 
   delete(): void {
     this.submitted = true;
     this.typeService.deleteType(this.type.id)
-        .subscribe(() => this.message = 'Match Type Deleted Successfully!');
+    .subscribe(() => this.message = 'Match Type Deleted Successfully!');
   }
 
   goBack(): void {
     this.location.back();
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     console.log('View loading complete.');
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     console.log('Destruction complete.');
   }
 

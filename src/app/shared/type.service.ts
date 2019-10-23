@@ -11,10 +11,10 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class TypeService {
-    public formData: Type;
-    public typesUrl = 'http://localhost:8080/api/types';
-    constructor(
-      public http: HttpClient
+  public formData: Type;
+  public typesUrl = 'http://localhost:8080/api/types';
+  constructor(
+    public http: HttpClient
   ) { }
 
   getTypes(): Observable<Type[]> {

@@ -4,6 +4,7 @@ import { Scoreline } from 'src/app/shared/scoreline.model';
 import { Location } from '@angular/common';
 import { Match } from 'src/app/shared/match.model';
 import { MatchService } from 'src/app/shared/match.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-create-scoreline',
@@ -31,27 +32,27 @@ export class CreateScorelineComponent implements OnInit {
     this.scoreline = new Scoreline();
   }
 
- addScoreline() {
+  addScoreline(): void {
     this.submitted = true;
     this.save();
     window.location.reload();
- }
+  }
 
   goBack(): void {
     this.location.back();
   }
 
-  public save(): void {
+  save(): void {
     this.scorelineService.addScoreline(this.scoreline)
     .subscribe();
   }
 
-  getMatches() {
+  getMatches(): Subscription {
     return this.matchService.getMatches()
       .subscribe(
       matches => {
         console.log(matches);
         this.matches = matches;
-        });
+      });
  }
 }

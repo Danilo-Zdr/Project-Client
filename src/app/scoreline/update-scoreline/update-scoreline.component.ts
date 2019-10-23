@@ -5,6 +5,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { Match } from 'src/app/shared/match.model';
 import { MatchService } from 'src/app/shared/match.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-update-scoreline',
@@ -13,10 +14,11 @@ import { MatchService } from 'src/app/shared/match.service';
 })
 export class UpdateScorelineComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  scoreline = new Scoreline();
-  matches: Match[];
-  submitted = false;
-  message: string;
+  public scoreline = new Scoreline();
+  public matches: Match[];
+  public submitted = false;
+  public message: string;
+  public id: number;
 
   constructor(
     private scorelineService: ScorelineService,
@@ -48,7 +50,7 @@ export class UpdateScorelineComponent implements OnInit, OnDestroy, AfterViewIni
     this.location.back();
   }
 
-  getMatches() {
+  getMatches(): Subscription {
     return this.matchService.getMatches()
     .subscribe(
       matches => {
@@ -57,11 +59,11 @@ export class UpdateScorelineComponent implements OnInit, OnDestroy, AfterViewIni
       });
  }
 
- ngAfterViewInit() {
+ ngAfterViewInit(): void {
     console.log('View loading complete.');
  }
 
- ngOnDestroy() {
+ ngOnDestroy(): void {
     console.log('Destruction complete.');
  }
 }

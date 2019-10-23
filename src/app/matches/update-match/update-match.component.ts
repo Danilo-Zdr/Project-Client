@@ -7,6 +7,7 @@ import { Team } from 'src/app/shared/team.model';
 import { Type } from 'src/app/shared/type.model';
 import { TeamService } from 'src/app/shared/team.service';
 import { TypeService } from 'src/app/shared/type.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-update-match',
@@ -20,6 +21,7 @@ export class UpdateMatchComponent implements OnInit, OnDestroy, AfterViewInit {
   public match = new Match() ;
   public submitted = false;
   public message: string;
+  public id: number;
 
   constructor(
     private matchService: MatchService,
@@ -53,7 +55,7 @@ export class UpdateMatchComponent implements OnInit, OnDestroy, AfterViewInit {
     this.location.back();
   }
 
-  getTeams() {
+  getTeams(): Subscription {
     return this.teamService.getTeams()
     .subscribe(
       teams => {
@@ -62,20 +64,20 @@ export class UpdateMatchComponent implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
-  getTypes() {
-   return this.typeService.getTypes()
-  .subscribe(
-    types => {
-      console.log(types);
-      this.types = types;
+  getTypes(): Subscription {
+    return this.typeService.getTypes()
+    .subscribe(
+      types => {
+        console.log(types);
+        this.types = types;
       });
  }
 
-  ngAfterViewInit() {
-  console.log('View loading complete.');
+  ngAfterViewInit(): void {
+    console.log('View loading complete.');
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     console.log('Destruction complete.');
   }
 }
